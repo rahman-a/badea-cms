@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_hero_sections",
+  "info": {
+    "displayName": "Hero Section",
+    "icon": "file",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "golden_Jubilee_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    },
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.scatter-image-block",
+      "required": false,
+      "max": 4
+    }
+  }
+}

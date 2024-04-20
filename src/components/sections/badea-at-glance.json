@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_badea_at_glances",
+  "info": {
+    "displayName": "BADEA at Glance",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "data": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.text-image-block",
+      "required": true,
+      "max": 5
+    }
+  }
+}

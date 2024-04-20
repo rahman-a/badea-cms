@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_timeline_sections",
+  "info": {
+    "displayName": "Timeline Section",
+    "icon": "layer"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "timelines": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::timeline.timeline"
+    }
+  }
+}

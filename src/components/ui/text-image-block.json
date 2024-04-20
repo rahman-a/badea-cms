@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_ui_text_image_blocks",
+  "info": {
+    "displayName": "Text Image Block",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "light"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    },
+    "action": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.button"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

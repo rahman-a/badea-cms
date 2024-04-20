@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_ui_scatter_image_blocks",
+  "info": {
+    "displayName": "Scatter Image Block",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "block": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.image",
+      "required": true,
+      "max": 4,
+      "min": 1
+    }
+  }
+}

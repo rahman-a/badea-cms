@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_golden_jubilees",
+  "info": {
+    "displayName": "Golden Jubilee",
+    "icon": "crown"
+  },
+  "options": {},
+  "attributes": {
+    "data": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.text-image-block",
+      "required": true
+    }
+  }
+}

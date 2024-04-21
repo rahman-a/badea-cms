@@ -15,9 +15,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": ["images"]
     },
-    "images": {
+    "images_blocks": {
       "type": "component",
       "repeatable": true,
       "component": "ui.scatter-image-block",

@@ -1,21 +1,20 @@
 {
-  "collectionName": "components_sections_golden_jubilees",
+  "collectionName": "components_ui_text_blocks",
   "info": {
-    "displayName": "Golden Jubilee",
-    "icon": "crown",
-    "description": ""
+    "displayName": "Text Block",
+    "icon": "italic"
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "content": {
       "type": "customField",
       "options": {
         "output": "HTML",
-        "preset": "light"
+        "preset": "light",
+        "maxLengthCharacters": 100
       },
       "required": true,
       "customField": "plugin::ckeditor.CKEditor"

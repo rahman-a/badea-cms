@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sd_gss",
+  "info": {
+    "singularName": "sd-gs",
+    "pluralName": "sd-gss",
+    "displayName": "SDGs",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "integer",
+      "required": true
+    },
+    "color": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": true,
+      "customField": "plugin::color-picker.color"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "onMainPage": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

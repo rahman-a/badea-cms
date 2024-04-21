@@ -1,14 +1,18 @@
 {
-  "collectionName": "components_ui_text_image_blocks",
+  "collectionName": "components_sections_arab_coordination_sections",
   "info": {
-    "displayName": "Text Image Block",
-    "icon": "chartBubble",
+    "displayName": "Arab Coordination Section",
+    "icon": "sun",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
+    "header_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     },
     "content": {
       "type": "customField",
@@ -16,14 +20,8 @@
         "output": "HTML",
         "preset": "light"
       },
+      "required": true,
       "customField": "plugin::ckeditor.CKEditor"
-    },
-    "image": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false
     },
     "action": {
       "type": "component",

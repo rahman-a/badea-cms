@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_medias",
+  "info": {
+    "singularName": "social-media",
+    "pluralName": "social-medias",
+    "displayName": "Social Media"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Platform": {
+      "type": "enumeration",
+      "enum": [
+        "Facebook",
+        "Youtube",
+        "Linkedin",
+        "X",
+        "Instagram",
+        "Tiktok"
+      ],
+      "default": "Facebook",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_operation_statistics",
+  "info": {
+    "displayName": "Operation Statistics",
+    "icon": "chartPie"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "sdgs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sd-gs.sd-gs"
+    }
+  }
+}

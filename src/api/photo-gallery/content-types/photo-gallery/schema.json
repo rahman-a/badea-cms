@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "photo_galleries",
+  "info": {
+    "singularName": "photo-gallery",
+    "pluralName": "photo-galleries",
+    "displayName": "Photo Gallery"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "collection": {
+      "type": "string",
+      "required": true
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "collection",
+      "required": true
+    },
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.image",
+      "required": true
+    }
+  }
+}

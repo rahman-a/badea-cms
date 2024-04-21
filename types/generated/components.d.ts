@@ -1,5 +1,27 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SectionsArabCoordinationSection extends Schema.Component {
+  collectionName: 'components_sections_arab_coordination_sections';
+  info: {
+    displayName: 'Arab Coordination Section';
+    icon: 'sun';
+    description: '';
+  };
+  attributes: {
+    header_image: Attribute.Media;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+    action: Attribute.Component<'ui.button'>;
+  };
+}
+
 export interface SectionsBadeaAtGlance extends Schema.Component {
   collectionName: 'components_sections_badea_at_glances';
   info: {
@@ -20,14 +42,45 @@ export interface SectionsBadeaAtGlance extends Schema.Component {
   };
 }
 
+export interface SectionsBadeaTrack extends Schema.Component {
+  collectionName: 'components_sections_badea_tracks';
+  info: {
+    displayName: 'BADEA Track';
+    icon: 'command';
+  };
+  attributes: {
+    title: Attribute.String;
+    subtitle: Attribute.Text;
+    tracks: Attribute.Component<'ui.track-card', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 8;
+        },
+        number
+      >;
+  };
+}
+
 export interface SectionsGoldenJubilee extends Schema.Component {
   collectionName: 'components_sections_golden_jubilees';
   info: {
     displayName: 'Golden Jubilee';
     icon: 'crown';
+    description: '';
   };
   attributes: {
-    data: Attribute.Component<'ui.text-image-block'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
   };
 }
 
@@ -41,13 +94,47 @@ export interface SectionsHeroSection extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     golden_Jubilee_image: Attribute.Media;
-    images: Attribute.Component<'ui.scatter-image-block', true> &
+    images_blocks: Attribute.Component<'ui.scatter-image-block', true> &
       Attribute.SetMinMax<
         {
           max: 4;
         },
         number
       >;
+  };
+}
+
+export interface SectionsOperationStatistics extends Schema.Component {
+  collectionName: 'components_sections_operation_statistics';
+  info: {
+    displayName: 'Operation Statistics';
+    icon: 'chartPie';
+  };
+  attributes: {
+    title: Attribute.String;
+    subtitle: Attribute.Text;
+    sdgs: Attribute.Relation<
+      'sections.operation-statistics',
+      'oneToMany',
+      'api::sd-gs.sd-gs'
+    >;
+  };
+}
+
+export interface SectionsSuccessStories extends Schema.Component {
+  collectionName: 'components_sections_success_stories';
+  info: {
+    displayName: 'Success Stories';
+    icon: 'discuss';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    button: Attribute.Component<'ui.button'>;
+    stories: Attribute.Relation<
+      'sections.success-stories',
+      'oneToMany',
+      'api::story.story'
+    >;
   };
 }
 
@@ -73,10 +160,15 @@ export interface UiButton extends Schema.Component {
   info: {
     displayName: 'button';
     icon: 'oneToMany';
+    description: '';
   };
   attributes: {
-    label: Attribute.String & Attribute.Required;
-    href: Attribute.String & Attribute.Required;
+    label: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Read more'>;
+    href: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'/success-stories'>;
   };
 }
 
@@ -85,6 +177,7 @@ export interface UiImage extends Schema.Component {
   info: {
     displayName: 'Image';
     icon: 'picture';
+    description: '';
   };
   attributes: {
     alt: Attribute.String;
@@ -97,9 +190,10 @@ export interface UiScatterImageBlock extends Schema.Component {
   info: {
     displayName: 'Scatter Image Block';
     icon: 'picture';
+    description: '';
   };
   attributes: {
-    block: Attribute.Component<'ui.image', true> &
+    images: Attribute.Component<'ui.image', true> &
       Attribute.Required &
       Attribute.SetMinMax<
         {
@@ -107,6 +201,28 @@ export interface UiScatterImageBlock extends Schema.Component {
           max: 4;
         },
         number
+      >;
+    block_name: Attribute.String;
+  };
+}
+
+export interface UiTextBlock extends Schema.Component {
+  collectionName: 'components_ui_text_blocks';
+  info: {
+    displayName: 'Text Block';
+    icon: 'italic';
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+          maxLengthCharacters: 100;
+        }
       >;
   };
 }
@@ -116,6 +232,7 @@ export interface UiTextImageBlock extends Schema.Component {
   info: {
     displayName: 'Text Image Block';
     icon: 'chartBubble';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
@@ -127,22 +244,40 @@ export interface UiTextImageBlock extends Schema.Component {
           preset: 'light';
         }
       >;
-    action: Attribute.Component<'ui.button'>;
     image: Attribute.Media;
+    action: Attribute.Component<'ui.button'>;
+  };
+}
+
+export interface UiTrackCard extends Schema.Component {
+  collectionName: 'components_ui_track_cards';
+  info: {
+    displayName: 'Track Card';
+    icon: 'command';
+  };
+  attributes: {
+    description: Attribute.Text & Attribute.Required;
+    icon: Attribute.Media & Attribute.Required;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'sections.arab-coordination-section': SectionsArabCoordinationSection;
       'sections.badea-at-glance': SectionsBadeaAtGlance;
+      'sections.badea-track': SectionsBadeaTrack;
       'sections.golden-jubilee': SectionsGoldenJubilee;
       'sections.hero-section': SectionsHeroSection;
+      'sections.operation-statistics': SectionsOperationStatistics;
+      'sections.success-stories': SectionsSuccessStories;
       'sections.timeline-section': SectionsTimelineSection;
       'ui.button': UiButton;
       'ui.image': UiImage;
       'ui.scatter-image-block': UiScatterImageBlock;
+      'ui.text-block': UiTextBlock;
       'ui.text-image-block': UiTextImageBlock;
+      'ui.track-card': UiTrackCard;
     }
   }
 }

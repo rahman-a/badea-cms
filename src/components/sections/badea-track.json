@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_badea_tracks",
+  "info": {
+    "displayName": "BADEA Track",
+    "icon": "command"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "tracks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.track-card",
+      "required": true,
+      "max": 8,
+      "min": 1
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_ui_track_cards",
+  "info": {
+    "displayName": "Track Card",
+    "icon": "command"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

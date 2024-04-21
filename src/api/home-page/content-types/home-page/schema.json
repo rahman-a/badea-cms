@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Sections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.arab-coordination-section",
+        "sections.badea-at-glance",
+        "sections.badea-track",
+        "sections.golden-jubilee",
+        "sections.hero-section",
+        "sections.operation-statistics",
+        "sections.success-stories",
+        "sections.timeline-section"
+      ],
+      "max": 8,
+      "min": 1,
+      "required": true
+    }
+  }
+}

@@ -362,48 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiTimelineTimeline extends Schema.CollectionType {
-  collectionName: 'timelines';
-  info: {
-    singularName: 'timeline';
-    pluralName: 'timelines';
-    displayName: 'timeline';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    image: Attribute.Media & Attribute.Required;
-    date: Attribute.Date & Attribute.Required;
-    content: Attribute.RichText &
-      Attribute.Required &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'light';
-        }
-      >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::timeline.timeline',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::timeline.timeline',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -830,6 +788,322 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAboutPageAboutPage extends Schema.SingleType {
+  collectionName: 'about_pages';
+  info: {
+    singularName: 'about-page';
+    pluralName: 'about-pages';
+    displayName: 'About Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    about_image: Attribute.Media;
+    blocks: Attribute.Component<'ui.text-image-block', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 5;
+        },
+        number
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about-page.about-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about-page.about-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
+  info: {
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'Home Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Sections: Attribute.DynamicZone<
+      [
+        'sections.arab-coordination-section',
+        'sections.badea-at-glance',
+        'sections.badea-track',
+        'sections.golden-jubilee',
+        'sections.hero-section',
+        'sections.operation-statistics',
+        'sections.success-stories',
+        'sections.timeline-section'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 8;
+        },
+        number
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPhotoGalleryPhotoGallery extends Schema.CollectionType {
+  collectionName: 'photo_galleries';
+  info: {
+    singularName: 'photo-gallery';
+    pluralName: 'photo-galleries';
+    displayName: 'Photo Gallery';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    collection: Attribute.String & Attribute.Required;
+    thumbnail: Attribute.Media;
+    slug: Attribute.UID<'api::photo-gallery.photo-gallery', 'collection'> &
+      Attribute.Required;
+    images: Attribute.Component<'ui.image', true> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::photo-gallery.photo-gallery',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::photo-gallery.photo-gallery',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSdGsSdGs extends Schema.CollectionType {
+  collectionName: 'sd_gss';
+  info: {
+    singularName: 'sd-gs';
+    pluralName: 'sd-gss';
+    displayName: 'SDGs';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    label: Attribute.String & Attribute.Required;
+    value: Attribute.Integer & Attribute.Required;
+    color: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    image: Attribute.Media & Attribute.Required;
+    onMainPage: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sd-gs.sd-gs',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sd-gs.sd-gs',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSocialMediaSocialMedia extends Schema.CollectionType {
+  collectionName: 'social_medias';
+  info: {
+    singularName: 'social-media';
+    pluralName: 'social-medias';
+    displayName: 'Social Media';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Platform: Attribute.Enumeration<
+      ['Facebook', 'Youtube', 'Linkedin', 'X', 'Instagram', 'Tiktok']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Facebook'>;
+    url: Attribute.String & Attribute.Required;
+    icon: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::social-media.social-media',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::social-media.social-media',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiStoryStory extends Schema.CollectionType {
+  collectionName: 'stories';
+  info: {
+    singularName: 'story';
+    pluralName: 'stories';
+    displayName: 'Story';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+    image: Attribute.Media & Attribute.Required;
+    action: Attribute.Component<'ui.button'>;
+    pdf: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::story.story',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::story.story',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTimelineTimeline extends Schema.CollectionType {
+  collectionName: 'timelines';
+  info: {
+    singularName: 'timeline';
+    pluralName: 'timelines';
+    displayName: 'timeline';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
+    date: Attribute.Date & Attribute.Required;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::timeline.timeline',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::timeline.timeline',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVideoGalleryVideoGallery extends Schema.CollectionType {
+  collectionName: 'video_galleries';
+  info: {
+    singularName: 'video-gallery';
+    pluralName: 'video-galleries';
+    displayName: 'Video Gallery';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    thumbnail: Attribute.Media;
+    video_url: Attribute.Text & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::video-gallery.video-gallery',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::video-gallery.video-gallery',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -840,7 +1114,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::timeline.timeline': ApiTimelineTimeline;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -849,6 +1122,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::about-page.about-page': ApiAboutPageAboutPage;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::photo-gallery.photo-gallery': ApiPhotoGalleryPhotoGallery;
+      'api::sd-gs.sd-gs': ApiSdGsSdGs;
+      'api::social-media.social-media': ApiSocialMediaSocialMedia;
+      'api::story.story': ApiStoryStory;
+      'api::timeline.timeline': ApiTimelineTimeline;
+      'api::video-gallery.video-gallery': ApiVideoGalleryVideoGallery;
     }
   }
 }

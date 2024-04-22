@@ -828,6 +828,41 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
   };
 }
 
+export interface ApiContactContact extends Schema.CollectionType {
+  collectionName: 'contacts';
+  info: {
+    singularName: 'contact';
+    pluralName: 'contacts';
+    displayName: 'Contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    first_name: Attribute.String & Attribute.Required;
+    last_name: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
+    message: Attribute.Text;
+    sentAt: Attribute.DateTime;
+    isRead: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomePageHomePage extends Schema.SingleType {
   collectionName: 'home_pages';
   info: {
@@ -1043,7 +1078,7 @@ export interface ApiTimelineTimeline extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
-    date: Attribute.Date & Attribute.Required;
+    date_from: Attribute.Date & Attribute.Required;
     content: Attribute.RichText &
       Attribute.Required &
       Attribute.CustomField<
@@ -1053,6 +1088,9 @@ export interface ApiTimelineTimeline extends Schema.CollectionType {
           preset: 'light';
         }
       >;
+    date_to: Attribute.Date;
+    show_year: Attribute.Boolean & Attribute.DefaultTo<false>;
+    show_month: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1123,6 +1161,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
+      'api::contact.contact': ApiContactContact;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::photo-gallery.photo-gallery': ApiPhotoGalleryPhotoGallery;
       'api::sd-gs.sd-gs': ApiSdGsSdGs;

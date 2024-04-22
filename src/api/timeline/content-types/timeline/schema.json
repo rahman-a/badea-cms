@@ -27,7 +27,7 @@
         "audios"
       ]
     },
-    "date": {
+    "date_from": {
       "type": "date",
       "required": true
     },
@@ -39,6 +39,17 @@
       },
       "required": true,
       "customField": "plugin::ckeditor.CKEditor"
+    },
+    "date_to": {
+      "type": "date"
+    },
+    "show_year": {
+      "type": "boolean",
+      "default": false
+    },
+    "show_month": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -8,16 +8,16 @@
     "name": "A Strapi developer"
   },
   "workspaces": [
-    "./src/plugins/*"
+    "./src/plugins/strapi-plugin-ckeditor"
   ],
   "scripts": {
-    "prebuild": "cd ./src/plugins/strapi-plugin-ckeditor && npm run build",
     "build": "strapi build",
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi"
   },
   "dependencies": {
+    "@ckeditor/strapi-plugin-ckeditor": "^0.0.11",
     "@strapi/plugin-cloud": "4.23.1",
     "@strapi/plugin-color-picker": "^4.23.1",
     "@strapi/plugin-i18n": "4.23.1",

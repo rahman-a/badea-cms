@@ -8,10 +8,10 @@
     "name": "A Strapi developer"
   },
   "workspaces": [
-    "./src/plugins/strapi-plugin-ckeditor"
+    "./src/plugins/*"
   ],
   "scripts": {
-    "prebuild": "cd src/plugins/strapi-plugin-ckeditor && npm run build",
+    "prebuild": "cd ./src/plugins/strapi-plugin-ckeditor && npm run build",
     "build": "strapi build",
     "develop": "strapi develop",
     "start": "strapi start",

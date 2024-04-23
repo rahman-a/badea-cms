@@ -7,6 +7,9 @@
   "author": {
     "name": "A Strapi developer"
   },
+  "workspaces": [
+    "src/plugins/strapi-plugin-ckeditor"
+  ],
   "scripts": {
     "build": "strapi build",
     "develop": "strapi develop",

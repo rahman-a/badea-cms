@@ -11,6 +11,7 @@
     "./src/plugins/strapi-plugin-ckeditor"
   ],
   "scripts": {
+    "prebuild": "cd ./src/plugins/strapi-plugin-ckeditor && npm run build",
     "build": "strapi build",
     "develop": "strapi develop",
     "start": "strapi start",

@@ -22,9 +22,10 @@
         "sections.hero-section",
         "sections.operation-statistics",
         "sections.success-stories",
-        "sections.timeline-section"
+        "sections.timeline-section",
+        "seo.metadata"
       ],
-      "max": 8,
+      "max": 9,
       "min": 1,
       "required": true
     }

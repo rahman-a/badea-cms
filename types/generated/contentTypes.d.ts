@@ -920,14 +920,15 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
         'sections.hero-section',
         'sections.operation-statistics',
         'sections.success-stories',
-        'sections.timeline-section'
+        'sections.timeline-section',
+        'seo.metadata'
       ]
     > &
       Attribute.Required &
       Attribute.SetMinMax<
         {
           min: 1;
-          max: 8;
+          max: 9;
         },
         number
       >;

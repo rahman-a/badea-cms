@@ -155,6 +155,19 @@ export interface SectionsTimelineSection extends Schema.Component {
   };
 }
 
+export interface SeoMetadata extends Schema.Component {
+  collectionName: 'components_seo_metadata';
+  info: {
+    displayName: 'Metadata';
+    icon: 'eye';
+  };
+  attributes: {
+    metaTitle: Attribute.String & Attribute.Required;
+    metaDescription: Attribute.Text & Attribute.Required;
+    metaImage: Attribute.Media & Attribute.Required;
+  };
+}
+
 export interface UiButton extends Schema.Component {
   collectionName: 'components_ui_buttons';
   info: {
@@ -272,6 +285,7 @@ declare module '@strapi/types' {
       'sections.operation-statistics': SectionsOperationStatistics;
       'sections.success-stories': SectionsSuccessStories;
       'sections.timeline-section': SectionsTimelineSection;
+      'seo.metadata': SeoMetadata;
       'ui.button': UiButton;
       'ui.image': UiImage;
       'ui.scatter-image-block': UiScatterImageBlock;
